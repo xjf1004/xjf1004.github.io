@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>Nginx - Refrain&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Refrain</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                时间轴
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Nginx">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-28 20:56" pubdate>
+        July 28, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Nginx</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p><strong>1、 nginx 简介</strong></p>
+<ul>
+<li>（1） 什么是 nginx 和可以做什么事情</li>
+<li>（2） 正向代理</li>
+<li>（3） 反向代理</li>
+<li>（4） 动静分离</li>
+</ul>
+<p>2、 Nginx 的安装</p>
+<p>3、 Nginx 的常用命令和配置文件</p>
+<p>4、 Nginx 配置实例 1 反向代理</p>
+<p>5、 Nginx 配置实例 2 负载均衡</p>
+<p>6、 Nginx 配置实例 3 动静分离  </p>
+<p>7、 Nginx 的高可用集群</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nginx</span> 配置主从模式<br><br>nginx 配置双主模式<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728155948176.png" srcset="/img/loading.gif" lazyload alt="image-20210728155948176"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160004711.png" srcset="/img/loading.gif" lazyload alt="image-20210728160004711"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160026260.png" srcset="/img/loading.gif" lazyload alt="image-20210728160026260"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160041907.png" srcset="/img/loading.gif" lazyload alt="image-20210728160041907"></p>
+<p>Nginx安装：</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160225746.png" srcset="/img/loading.gif" lazyload alt="image-20210728160225746"></p>
+<p>1.解压opt目录下的pcer</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">tar</span> -zxvf pcre-<span class="hljs-number">8</span>.<span class="hljs-number">37</span>.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>2.进入pcre目录,依次执行以下命令</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gauss">./configure<br><span class="hljs-built_in">make</span> &amp;&amp; <span class="hljs-built_in">make</span> install<br>yum -y install <span class="hljs-built_in">make</span> zlib zlib-devel gcc-c++ libtool openssl openssl-devel<br></code></pre></td></tr></table></figure>
+
+<p>3.安装nginx</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gauss">tar -zxvf nginx<span class="hljs-number">-1.12</span><span class="hljs-number">.2</span>tar.gz<br>进入nginx目录<br>./configure<br><span class="hljs-built_in">make</span> &amp;&amp; <span class="hljs-built_in">make</span> install<br></code></pre></td></tr></table></figure>
+
+<p>4.进入/usr/local/nginx目录，输入./nginx即可启动</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160628645.png" srcset="/img/loading.gif" lazyload alt="image-20210728160628645"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160658035.png" srcset="/img/loading.gif" lazyload alt="image-20210728160658035"></p>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160846901.png" srcset="/img/loading.gif" lazyload alt="image-20210728160846901"></p>
+<p>1.在linux中开启tomcat</p>
+<p>2.修改nginx的配置文件：</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728160937068.png" srcset="/img/loading.gif" lazyload alt="image-20210728160937068"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728161003099.png" srcset="/img/loading.gif" lazyload alt="image-20210728161003099"></p>
+<h2 id="反向代理2："><a href="#反向代理2：" class="headerlink" title="反向代理2："></a>反向代理2：</h2><p><strong>1、实现效果</strong></p>
+<p><strong>使用</strong> <strong>nginx</strong> <strong>反向代理，根据访问的路径跳转到不同端口的服务中</strong></p>
+<p><strong>nginx</strong> <strong>监听端口为</strong> <strong>9001</strong>， </p>
+<p><strong>访问</strong> <strong><a target="_blank" rel="noopener" href="http://192.168.200.130:9001/edu/">http://192.168.200.130:9001/edu/</a></strong> <strong>直接跳转到</strong> <strong>127.0.0.1:8080</strong></p>
+<p><strong>访问</strong> <strong>http:// 192.168.200.130:9001/vod/</strong> <strong>直接跳转到</strong> <strong>127.0.0.1:8081</strong> </p>
+<p>1.在opt下创建tm8080和tm8081</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728161149982.png" srcset="/img/loading.gif" lazyload alt="image-20210728161149982"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728161355552.png" srcset="/img/loading.gif" lazyload alt="image-20210728161355552"></p>
+<p>修改8081的配置：把80xx改为和8080不同的端口，然后启动两个tomcat</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728161453925.png" srcset="/img/loading.gif" lazyload alt="image-20210728161453925"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728161527209.png" srcset="/img/loading.gif" lazyload alt="image-20210728161527209"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728161536948.png" srcset="/img/loading.gif" lazyload alt="image-20210728161536948"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728162838416.png" srcset="/img/loading.gif" lazyload alt="image-20210728162838416"></p>
+<p>保存，开放9001端口，重新加载nginx</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728163412713.png" srcset="/img/loading.gif" lazyload alt="image-20210728163412713"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728163554878.png" srcset="/img/loading.gif" lazyload alt="image-20210728163554878"></p>
+<h2 id="负载均衡："><a href="#负载均衡：" class="headerlink" title="负载均衡："></a>负载均衡：</h2><p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728165338263.png" srcset="/img/loading.gif" lazyload alt="image-20210728165338263"></p>
+<p>修改如下配置在conf下的nginx.conf中</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728165114113.png" srcset="/img/loading.gif" lazyload alt="image-20210728165114113"></p>
+<p>随着互联网信息的爆炸性增长，负载均衡（load balance）已经不再是一个很陌生的话题，顾名思义，负载均衡即是将负载分摊到不同的服务单元，既保证服务的可用性，又保证响应足够快，给用户很好的体验。快速增长的访问量和数据流量催生了各式各样的负载均衡产品，很多专业的负载均衡硬件提供了很好的功能，但却价格不菲，这使得负载均衡软件大受欢迎，nginx 就是其中的一个，在 linux 下有 Nginx、LVS、Haproxy 等等服务可以提供负载均衡服务，而且 Nginx 提供了几种分配方式(策略)： </p>
+<p><strong>1、轮询（默认）</strong></p>
+<p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器 down 掉，能自动剔除。</p>
+<p><strong>2weight</strong></p>
+<p>weight 代表权,重默认为 1,权重越高被分配的客户端越多</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">upstream server_pool&#123; <br>server 192.168.5.21 weight=10; <br>server 192.168.5.22 weight=10; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>3 ip_hash</strong></p>
+<p>每个请求按访问 ip 的 hash 结果分配，这样每个访客固定访问一个后端服务器，可以解决 session 的问题。 </p>
+<p>192.168.111.1第一次访问返回的是8080，然后客户端就记住了这个ip的哈希，下一次这个地址访问的时候就就还会分配8080，除非ip地址发生改变。</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs roboconf">upstream server_pool&#123; <br><span class="hljs-attribute">ip_hash; </span><br><span class="hljs-attribute">server 192.168.5.21</span>:80; <br><span class="hljs-attribute">server 192.168.5.22</span>:80; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>4 fair（第三方）</strong></p>
+<p>按后端服务器的响应时间来分配请求，响应时间短的优先分配。</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs axapta">upstream server_pool&#123; <br><span class="hljs-keyword">server</span> <span class="hljs-number">192.168</span><span class="hljs-number">.5</span><span class="hljs-number">.21</span>:<span class="hljs-number">80</span>; <br><span class="hljs-keyword">server</span> <span class="hljs-number">192.168</span><span class="hljs-number">.5</span><span class="hljs-number">.22</span>:<span class="hljs-number">80</span>; <br>fair; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h2><p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728170642833.png" srcset="/img/loading.gif" lazyload alt="image-20210728170642833"></p>
+<p>通过 location 指定不同的后缀名实现不同的请求转发。通过 expires 参数设置，可以使浏 览器缓存过期时间，减少与服务器之前的请求和流量。具体 Expires 定义：是给一个资源 设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可， 所以不会产生额外的流量。此种方法非常适合不经常变动的资源。（如果经常更新的文件， 不建议使用 Expires 来缓存），我这里设置 3d，表示在这 3 天之内访问这个 URL，发送一 个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码304， 如果有修改，则直接从服务器重新下载，返回状态码 200。 </p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728171624602.png" srcset="/img/loading.gif" lazyload alt="image-20210728171624602"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728190018462.png" srcset="/img/loading.gif" lazyload alt="image-20210728190018462"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728195305969.png" srcset="/img/loading.gif" lazyload alt="image-20210728195305969"></p>
+<h2 id="Nginx高可用"><a href="#Nginx高可用" class="headerlink" title="Nginx高可用"></a>Nginx高可用</h2><p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728195432791.png" srcset="/img/loading.gif" lazyload alt="image-20210728195432791"></p>
+<p>2、配置高可用的准备工作 </p>
+<ul>
+<li>（1）需要两台服务器 192.168.200.130 和 192.168.200.133</li>
+<li>（2）在两台服务器安装 nginx </li>
+<li>（3）在两台服务器安装 keepalived </li>
+</ul>
+<p>3、在两台服务器安装 keepalived </p>
+<p>（1）使用 yum 命令进行安装 </p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> keepalived –y <br></code></pre></td></tr></table></figure>
+
+<p>（2）安装之后，在 etc 里面生成目录 keepalived，有文件 keepalived.conf</p>
+<p>修改配置文件：</p>
+<p>把etc/keepalived文件改为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs shell">! Configuration File for keepalived<br><br>global_defs &#123;<br>	 notification_email &#123;<br>		acassen@firewall.loc<br>		failover@firewall.loc<br>		sysadmin@firewall.loc<br> &#125;<br>	 notification_email_from Alexandre.Cassen@firewall.loc<br>	 smtp_server 192.168.200.130<br>	 smtp_connect_timeout 30<br>	 router_id LVS_DEVEL<br>&#125;<br>vrrp_script chk_http_port &#123;<br>	 script &quot;/usr/local/src/nginx_check.sh&quot;<br>	 interval 2 #（检测脚本执行的间隔）<br>	 weight 2<br>&#125;<br><br>vrrp_instance VI_1 &#123;<br>	 state MASTER # 备份服务器上将 MASTER 改为 BACKUP <br>	 interface ens33 //网卡<br>	 virtual_router_id 51 # 主、备机的 virtual_router_id 必须相同<br>	 priority 100 # 主、备机取不同的优先级，主机值较大，备份机值较小<br>	 advert_int 1<br>	 authentication &#123;<br>	 auth_type PASS<br>	 auth_pass 1111<br>	 &#125;<br>	 virtual_ipaddress &#123;<br>	 192.168.200.50 // VRRP H 虚拟地址<br>	 &#125; <br> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>把usr/local/src增加脚本文件：</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728202818137.png" srcset="/img/loading.gif" lazyload alt="image-20210728202818137"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br>A=`ps -C nginx –no-header |wc -l`<br>if [ $A -eq 0 ];then<br>    /usr/local/nginx/sbin/nginx<br>    sleep 2<br>    if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then<br>        killall keepalived<br>    fi<br>fi<br></code></pre></td></tr></table></figure>
+
+
+
+<p>开启两个nginx</p>
+<p>开启两个服务器keepalived</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> keepalived.service<br></code></pre></td></tr></table></figure>
+
+
+
+<p>测试：</p>
+<p>输入192.168.200.50，会出现ngixn欢迎页</p>
+<p>把192.168.200.130宕机</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino">关闭nginx<br>systemctl stop keepalived.service<br></code></pre></td></tr></table></figure>
+
+<p>会发现还有nginx欢迎页</p>
+<h2 id="Nginx原理"><a href="#Nginx原理" class="headerlink" title="Nginx原理"></a>Nginx原理</h2><p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728204016774.png" srcset="/img/loading.gif" lazyload alt="image-20210728204016774"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728204031602.png" srcset="/img/loading.gif" lazyload alt="image-20210728204031602"></p>
+<p><strong>master-workers 的机制的好处</strong> </p>
+<p>首先，对于每个 worker 进程来说，独立的进程，<strong>不需要加锁，所以省掉了锁带来的开销</strong>，同时在编程以及问题查找时，也会方便很多。其次，采用独立的进程，可以让互相之间不会影响，一个进程退出后，其它进程还在工作，服务不会中断，master 进程则很快启动新的worker 进程。当然，worker 进程的异常退出，肯定是程序有 bug 了，异常退出，会导致当前 worker 上的所有请求失败，不过不会影响到所有请求，所以降低了风险。</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs axapta">（<span class="hljs-number">1</span>）可以使用 nginx –s reload 热部署，利用 nginx 进行热部署操作<br>（<span class="hljs-number">2</span>）每个 woker 是独立的进程，如果有其中的一个 woker 出现问题，其他 woker 独立的，继续进行争抢，实现请求过程，不会造成服务中断<br><br><br><br>即worker1拿到了一开始抢到了任务，然后修改了配置文件，这个时候worker1不会过来争抢，其他的worker来争抢，当worker2抢到了<span class="hljs-keyword">client</span>之后，会加载配置文件，这个时候会把worker1的配置修改，完成热部署<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>需要设置多少个</strong> <strong>worker</strong></p>
+<p>Nginx 同 redis 类似都采用了 io 多路复用机制，每个 worker 都是一个独立的进程，但每个进程里只有一个主线程，通过异步非阻塞的方式来处理请求， 即使是千上万个请求也不在话下。每个 worker 的线程可以把一个 cpu 的性能发挥到极致。所以 worker 数和服务器的 cpu数相等是最为适宜的。设少了会浪费 cpu，设多了会造成 cpu 频繁切换上下文带来的损耗。</p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728204802714.png" srcset="/img/loading.gif" lazyload alt="image-20210728204802714"></p>
+<p><img src="https://gitee.com/wang-yang11/ingcache/raw/master/ingcache/image-20210728205113869.png" srcset="/img/loading.gif" lazyload alt="image-20210728205113869"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Nginx/">Nginx</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/25/RockerMQ-%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">RockerMQ 笔记</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/xjf1004" target="_blank" rel="nofollow noopener"><span>Github</span></a> <i class="iconfont icon-love"></i> <a href="https://gitee.com/wang-yang11" target="_blank" rel="nofollow noopener"><span>Gitee</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
